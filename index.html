@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projeto Moveleiro | Mesa Multifuncional</title>
+<meta name="description" content="Projeto Rakatin 2026 — mesa multifuncional pensada para otimizar espaços pequenos.">
+<style>
+:root{
+  --marrom-950:#21170f;--marrom-900:#2d1e14;--marrom-800:#3d291b;--marrom-700:#5a3a24;
+  --marrom-500:#8a613e;--bege-100:#f7f0e5;--bege-200:#eadcc9;--bege-300:#d9c2a4;
+  --branco:#fffdf9;--texto:#33261c;--linha:rgba(61,41,27,.15);
+  --sombra:0 24px 60px rgba(42,27,17,.16)
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--texto);background:var(--bege-100);line-height:1.6}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.nav{position:fixed;top:0;left:0;right:0;z-index:10;backdrop-filter:blur(14px);background:rgba(255,253,249,.84);border-bottom:1px solid var(--linha)}
+.nav-inner{width:min(1160px,92%);margin:auto;height:76px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;font-size:.82rem}
+.brand-mark{width:34px;height:34px;border-radius:10px;background:var(--marrom-800);color:var(--branco);display:grid;place-items:center}
+.nav-links{display:flex;gap:26px;font-size:.9rem;color:#654c39}.nav-links a:hover{color:var(--marrom-900)}
+
+.hero{min-height:100vh;padding:130px 0 70px;background:radial-gradient(circle at 85% 12%,rgba(217,194,164,.48),transparent 30%),linear-gradient(135deg,#fffdf9 0%,#f7f0e5 52%,#eadcc9 100%);overflow:hidden}
+.hero-inner{width:min(1160px,92%);margin:auto;min-height:calc(100vh - 200px);display:grid;grid-template-columns:1fr 1.05fr;gap:70px;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:.78rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--marrom-700);margin-bottom:22px}
+.eyebrow:before{content:"";width:30px;height:2px;background:var(--marrom-500)}
+h1,h2{font-family:Georgia,"Times New Roman",serif;color:var(--marrom-950);letter-spacing:-.055em}
+h1{font-size:clamp(3.2rem,7vw,6.3rem);line-height:.94}
+.hero-copy{font-size:1.08rem;color:#654c39;max-width:550px;margin:28px 0 34px}
+.buttons{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 22px;border-radius:999px;font-weight:750;border:1px solid var(--marrom-800);transition:.2s}
+.btn-primary{background:var(--marrom-800);color:var(--branco)}.btn-primary:hover{transform:translateY(-2px);background:var(--marrom-950)}
+.btn-secondary{background:transparent;color:var(--marrom-800)}.btn-secondary:hover{background:rgba(61,41,27,.06)}
+.visual-frame{background:var(--branco);padding:12px;border-radius:28px;box-shadow:var(--sombra);border:1px solid rgba(61,41,27,.12);transform:rotate(1deg)}
+.visual-frame img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:19px}
+.tag{position:absolute;right:-22px;bottom:28px;background:var(--marrom-800);color:#fffdf9;padding:17px 20px;border-radius:16px;box-shadow:0 16px 35px rgba(42,27,17,.22);font-size:.82rem;font-weight:700;max-width:210px}
+.hero-visual{position:relative}
+
+.section{padding:105px 0}.section-inner{width:min(1060px,92%);margin:auto}
+.section-head{display:flex;justify-content:space-between;gap:30px;align-items:end;margin-bottom:45px}
+.kicker{color:var(--marrom-500);font-weight:850;letter-spacing:.14em;text-transform:uppercase;font-size:.76rem;margin-bottom:10px}
+h2{font-size:clamp(2.3rem,4vw,4rem);line-height:1}
+.section-intro{max-width:460px;color:#705a46}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{background:var(--branco);border:1px solid var(--linha);border-radius:22px;padding:30px;box-shadow:0 12px 35px rgba(42,27,17,.07)}
+.number{width:38px;height:38px;border-radius:12px;background:var(--bege-200);display:grid;place-items:center;font-weight:850;color:var(--marrom-800);margin-bottom:28px}
+.card h3{font-size:1.15rem;margin-bottom:10px;color:var(--marrom-900)}.card p{color:#725d49;font-size:.94rem}
+
+.showcase{background:var(--marrom-900);color:#fff8ef;padding:105px 0;position:relative;overflow:hidden}
+.showcase::before{content:"";position:absolute;width:460px;height:460px;border:1px solid rgba(255,255,255,.1);border-radius:50%;right:-150px;top:-190px}
+.showcase-grid{width:min(1060px,92%);margin:auto;display:grid;grid-template-columns:.9fr 1.1fr;gap:70px;align-items:center}
+.showcase h2{color:#fff8ef}.showcase p{color:#d9c9b8;margin:22px 0;max-width:500px}
+.specs{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:30px}
+.spec{padding:18px;border:1px solid rgba(255,255,255,.12);border-radius:16px;background:rgba(255,255,255,.04)}
+.spec strong{display:block;font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;color:#bfa58b;margin-bottom:5px}.spec span{font-weight:700}
+.showcase-image{border-radius:24px;overflow:hidden;border:1px solid rgba(255,255,255,.12);background:#fff;padding:10px;box-shadow:0 25px 55px rgba(0,0,0,.2)}
+.showcase-image img{border-radius:16px;aspect-ratio:4/3;object-fit:cover}
+
+.details{background:#fffdf9}
+.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:55px;align-items:center}
+.detail-image{background:var(--branco);padding:11px;border:1px solid var(--linha);border-radius:24px;box-shadow:0 18px 45px rgba(42,27,17,.09)}
+.detail-image img{border-radius:16px;aspect-ratio:821/888;object-fit:cover}
+.detail-copy p{color:#705a46;margin:20px 0 25px}
+.feature-list{display:grid;gap:11px}
+.feature{display:flex;gap:14px;align-items:flex-start;padding:15px 17px;background:var(--bege-100);border:1px solid var(--linha);border-radius:16px}
+.feature-icon{width:34px;height:34px;flex:none;border-radius:10px;background:var(--marrom-800);color:#fff;display:grid;place-items:center;font-size:.85rem;font-weight:900}
+.feature strong{display:block;color:var(--marrom-900)}.feature span{font-size:.87rem;color:#765e48}
+
+.process{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.timeline{border-left:1px solid var(--bege-300);padding-left:28px}
+.step{position:relative;padding:0 0 30px}.step:last-child{padding-bottom:0}
+.step:before{content:"";position:absolute;left:-34px;top:5px;width:11px;height:11px;border-radius:50%;background:var(--marrom-700);box-shadow:0 0 0 6px var(--bege-100)}
+.step small{color:var(--marrom-500);font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+.step h3{margin:5px 0 6px;color:var(--marrom-900)}.step p{color:#725d49;font-size:.94rem}
+
+.use-section{background:var(--bege-200)}
+.use-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.use{background:#fffdf9;border-radius:22px;padding:30px;border:1px solid var(--linha)}
+.use .symbol{font-size:1.7rem;margin-bottom:18px}.use h3{color:var(--marrom-900);margin-bottom:8px}.use p{font-size:.92rem;color:#725d49}
+
+.final{padding:100px 0 110px;text-align:center;background:linear-gradient(180deg,var(--bege-100),#e5d4bd)}
+.final-inner{width:min(760px,92%);margin:auto}.final h2{margin-bottom:18px}.final p{color:#705a46;margin:0 auto 30px;max-width:620px}
+footer{background:var(--marrom-950);color:#bda995;padding:25px 4%;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.78rem}
+
+@media(max-width:850px){
+.nav-links{display:none}.hero-inner,.showcase-grid,.process,.detail-grid{grid-template-columns:1fr}
+.hero{padding-top:110px}.hero-inner{gap:45px}.hero-visual{max-width:650px;margin:auto}.section-head{display:block}.section-intro{margin-top:16px}.cards,.use-grid{grid-template-columns:1fr}.showcase-grid{gap:40px}
+}
+@media(max-width:520px){.hero-inner,.section-inner,.showcase-grid{width:88%}h1{font-size:3.25rem}.tag{right:8px}.specs{grid-template-columns:1fr}.btn{width:100%}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+<div class="nav-inner">
+<a class="brand" href="#inicio"><span class="brand-mark">M</span> Projeto Moveleiro</a>
+<div class="nav-links"><a href="#projeto">Projeto</a><a href="#recursos">Recursos</a><a href="#processo">Processo</a><a href="#uso">Aplicações</a></div>
+</div>
+</nav>
+
+<main>
+<section class="hero" id="inicio">
+<div class="hero-inner">
+<div>
+<div class="eyebrow">Projeto Rakatin · 2026</div>
+<h1>Uma mesa.<br>Uma ideia.<br>Um projeto.</h1>
+<p class="hero-copy">Uma proposta de mobiliário multifuncional criada para aproveitar melhor espaços pequenos, reunindo estudo, trabalho e lazer em uma única peça.</p>
+<div class="buttons"><a class="btn btn-primary" href="#projeto">Conhecer o projeto</a><a class="btn btn-secondary" href="#recursos">Ver recursos</a></div>
+</div>
+<div class="hero-visual">
+<div class="visual-frame"><img src="mesa-lateral-aberta.png" alt="Mesa multifuncional com o tampo lateral retrátil aberto para o lado"></div>
+<div class="tag">Design + funcionalidade + otimização de espaço</div>
+</div>
+</div>
+</section>
+
+<section class="section" id="projeto">
+<div class="section-inner">
+<div class="section-head">
+<div><div class="kicker">O projeto</div><h2>Feita para<br>ser útil.</h2></div>
+<p class="section-intro">A mesa foi pensada principalmente para estudantes e pessoas que vivem em quitinetes e apartamentos, mas pode acompanhar qualquer rotina que precise de um móvel compacto e versátil.</p>
+</div>
+<div class="cards">
+<article class="card"><div class="number">01</div><h3>Otimização de espaço</h3><p>Várias funções ficam integradas à própria mesa, ajudando a aproveitar melhor cada metro quadrado.</p></article>
+<article class="card"><div class="number">02</div><h3>Estudo e trabalho</h3><p>Livro, tablet, planilhas, equipamentos e materiais podem ficar organizados em uma estação única.</p></article>
+<article class="card"><div class="number">03</div><h3>Lazer e jogos</h3><p>Quando a rotina muda, a mesma superfície pode ser usada para jogar, criar ou realizar outras atividades.</p></article>
+</div>
+</div>
+</section>
+
+<section class="showcase" id="recursos">
+<div class="showcase-grid">
+<div>
+<div class="kicker">Conceito de produto</div>
+<h2>O móvel como solução.</h2>
+<p>A mesa reúne mecanismos e espaços de apoio que aparecem somente quando são necessários. Assim, a peça consegue atender diferentes tarefas sem exigir uma área grande.</p>
+<div class="specs">
+<div class="spec"><strong>Tomada</strong><span>Retrátil, acionada por clique</span></div>
+<div class="spec"><strong>Iluminação</strong><span>Lâmpada retrátil integrada</span></div>
+<div class="spec"><strong>Organização</strong><span>Espaço para livros e materiais</span></div>
+<div class="spec"><strong>Apoio</strong><span>Tablet, planilhas e bancadinhas</span></div>
+</div>
+</div>
+<div class="showcase-image"><img src="mesa-lateral-aberta.png" alt="Vista da mesa com o tampo lateral retrátil aberto"></div>
+</div>
+</section>
+
+<section class="section details">
+<div class="section-inner">
+<div class="section-head">
+<div><div class="kicker">Detalhes do produto</div><h2>Quando fechada,<br>fica compacta.</h2></div>
+<p class="section-intro">A segunda vista mostra a mesa recolhida, reforçando a proposta de guardar os recursos e liberar espaço quando eles não estão sendo utilizados.</p>
+</div>
+<div class="detail-grid">
+<div class="detail-image"><img src="mesa-fechada-atualizada.png" alt="Mesa com o novo tampo lateral recolhido, ocupando menos espaço"></div>
+<div class="detail-copy">
+<h2 style="font-size:2.4rem">Tudo no lugar.</h2>
+<p>O conceito combina uma estrutura de inspiração moveleira com componentes retráteis para transformar a mesa conforme a atividade.</p>
+<div class="feature-list">
+<div class="feature"><div class="feature-icon">01</div><div><strong>Tomada retrátil</strong><span>Com um clique, sobe para a superfície e depois pode ser recolhida.</span></div></div>
+<div class="feature"><div class="feature-icon">02</div><div><strong>Bancadinhas retráteis</strong><span>A extensão lateral sai do conjunto quando é necessária e volta para uma posição compacta quando deixa de ser usada.</span></div></div>
+<div class="feature"><div class="feature-icon">03</div><div><strong>Espaço para livros</strong><span>Área inferior destinada à organização de materiais e objetos.</span></div></div>
+<div class="feature"><div class="feature-icon">04</div><div><strong>Apoio para tablet e planilhas</strong><span>Um ponto pensado para consulta durante estudo ou trabalho.</span></div></div>
+<div class="feature"><div class="feature-icon">05</div><div><strong>Estrutura + lâmpada retrátil</strong><span>A nova estrutura acompanha o tampo lateral, enquanto a iluminação continua retrátil.</span></div></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section" id="processo">
+<div class="section-inner">
+<div class="section-head">
+<div><div class="kicker">Desenvolvimento</div><h2>Da ideia<br>à peça.</h2></div>
+<p class="section-intro">O desenvolvimento considera o uso do móvel, a distribuição dos espaços e uma estética coerente com a indústria moveleira.</p>
+</div>
+<div class="process">
+<div><p style="color:#725d49;max-width:470px">O projeto parte de uma necessidade real: criar uma estação que possa mudar de função sem exigir um cômodo exclusivo. Por isso, os componentes são incorporados à estrutura da própria mesa.</p></div>
+<div class="timeline">
+<div class="step"><small>Etapa 01</small><h3>Necessidade</h3><p>Otimizar espaços pequenos para quem precisa estudar, trabalhar ou ter lazer em casa.</p></div>
+<div class="step"><small>Etapa 02</small><h3>Conceito</h3><p>Definição de uma mesa compacta com recursos retráteis e áreas de armazenamento.</p></div>
+<div class="step"><small>Etapa 03</small><h3>Projeto</h3><p>Integração da tomada, iluminação, apoios, livros, tablet e estrutura de apoio.</p></div>
+<div class="step"><small>Etapa 04</small><h3>Apresentação</h3><p>Comunicação do produto de forma visual, clara e objetiva para o projeto Rakatin.</p></div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section use-section" id="uso">
+<div class="section-inner">
+<div class="section-head">
+<div><div class="kicker">Para quem?</div><h2>Um móvel,<br>várias rotinas.</h2></div>
+<p class="section-intro">Embora o foco inicial seja o público que vive em espaços compactos, a proposta pode acompanhar diferentes estilos de uso.</p>
+</div>
+<div class="use-grid">
+<article class="use"><div class="symbol">📚</div><h3>Estudante</h3><p>Livros, tablet, planilhas, tomada e iluminação reunidos em um espaço de estudo.</p></article>
+<article class="use"><div class="symbol">💻</div><h3>Trabalho</h3><p>Uma estação compacta para notebook, documentos, organização e tarefas do dia.</p></article>
+<article class="use"><div class="symbol">🎮</div><h3>Jogos e lazer</h3><p>Uma superfície versátil que pode se adaptar a momentos de entretenimento.</p></article>
+</div>
+</div>
+</section>
+
+<section class="final">
+<div class="final-inner">
+<div class="kicker">Projeto Rakatin · 2026</div>
+<h2>Madeira, função e criatividade.</h2>
+<p>Uma proposta de mobiliário multifuncional para transformar poucos metros quadrados em um ambiente mais versátil, organizado e útil.</p>
+<a class="btn btn-primary" href="#inicio">Voltar ao início</a>
+</div>
+</section>
+</main>
+
+<footer><span>Projeto Moveleiro · Apresentação 2026</span><span>Mesa multifuncional · Rakatin</span></footer>
+</body>
+</html>
